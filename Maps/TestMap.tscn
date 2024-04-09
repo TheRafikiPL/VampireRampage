@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctb66qvjfqx5g"]
+
+[ext_resource type="PackedScene" uid="uid://by00g6xvk7n4r" path="res://Prefabs/Player.tscn" id="1_8njf6"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.cs" id="1_iy6wj"]
+[ext_resource type="PackedScene" uid="uid://bsokce4sl54qa" path="res://Prefabs/Human.tscn" id="2_4h10l"]
+[ext_resource type="Script" path="res://addons/godot_helper_pack/core/2d/shape/shape_draw_2d.gd" id="3_e308n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8km5j"]
+
+[node name="TestMap" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI" node_paths=PackedStringArray("player")]
+offset_left = 1092.0
+offset_top = 587.0
+offset_right = 1096.0
+offset_bottom = 614.0
+script = ExtResource("1_iy6wj")
+player = NodePath("../../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -54.0
+offset_top = -43.0
+offset_right = 1225.0
+offset_bottom = 712.0
+color = Color(0.764706, 0.462745, 0.360784, 1)
+
+[node name="Wall1" type="StaticBody2D" parent="."]
+position = Vector2(-0.999992, -412)
+rotation = -1.57243
+scale = Vector2(6.30314, 76.3104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1"]
+shape = SubResource("RectangleShape2D_8km5j")
+
+[node name="ShapeDraw2D" type="Node2D" parent="Wall1/CollisionShape2D"]
+script = ExtResource("3_e308n")
+color = Color(0.0705882, 0.317647, 0.564706, 1)
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(-6, 985)
+rotation = -1.57243
+scale = Vector2(6.30314, 76.3104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+shape = SubResource("RectangleShape2D_8km5j")
+
+[node name="ShapeDraw2D" type="Node2D" parent="Wall2/CollisionShape2D"]
+script = ExtResource("3_e308n")
+color = Color(0.0705882, 0.317647, 0.564706, 1)
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+position = Vector2(824, 286)
+scale = Vector2(6.30314, 76.3104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+shape = SubResource("RectangleShape2D_8km5j")
+
+[node name="ShapeDraw2D" type="Node2D" parent="Wall3/CollisionShape2D"]
+script = ExtResource("3_e308n")
+color = Color(0.0705882, 0.317647, 0.564706, 1)
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+position = Vector2(-817, 290)
+scale = Vector2(6.30314, 76.3104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
+shape = SubResource("RectangleShape2D_8km5j")
+
+[node name="ShapeDraw2D" type="Node2D" parent="Wall4/CollisionShape2D"]
+script = ExtResource("3_e308n")
+color = Color(0.0705882, 0.317647, 0.564706, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_8njf6")]
+
+[node name="Human" parent="." instance=ExtResource("2_4h10l")]
+position = Vector2(376, 169)
+
+[node name="Human2" parent="." instance=ExtResource("2_4h10l")]
+position = Vector2(145, 152)
+
+[node name="Human3" parent="." instance=ExtResource("2_4h10l")]
+position = Vector2(345, 56)
+
+[node name="Human4" parent="." instance=ExtResource("2_4h10l")]
+position = Vector2(61, 152)
+
+[node name="Human5" parent="." instance=ExtResource("2_4h10l")]
+position = Vector2(-27, 152)
